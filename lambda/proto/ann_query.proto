@@ -1,0 +1,40 @@
+//
+//  Copyright 2023 The Turbo Authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package lambda.proto;
+
+// vector field that queried
+message AnnQueryVector {
+  string field_name = 1;
+  // float vector element
+  repeated float value = 2;
+}
+
+// the metric type that
+// configure in index config
+
+// ann query
+message AnnSearchQuery {
+  // vector field
+  AnnQueryVector query = 1;
+  oneof condition {
+    uint32 top_k = 2;
+    float range_search_radius = 4; //
+  }
+  // for example probe etc...
+  map<string, string> search_params = 3;
+}

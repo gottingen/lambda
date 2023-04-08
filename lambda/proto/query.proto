@@ -1,0 +1,81 @@
+syntax = "proto3";
+option cc_generic_services = false;
+option cc_enable_arenas = true;
+
+import "lambda/proto/ann_query.proto";
+import "google/protobuf/struct.proto";
+
+package lambda.proto;
+
+enum BoolOperationType {
+  SHOULD = 0;
+  MUST = 1;
+  MUST_NOT = 2;
+  FILTER = 3;
+};
+
+message BoolQuery {
+  BoolOperationType op_type = 1;
+
+  oneof oneof_query {
+    Term term = 2;
+    NumericEqual numeric_equal = 3;
+    StrEqual     str_equal = 4;
+    ValueRange value_range = 5;
+    RepeatBoolQuery sub_query = 6;
+    BloomFilterQuery bloom_filter_query = 7;
+    DocIdInList docid_in_list = 8;
+    AnnSearchQuery ann_search_query = 9;
+  }
+};
+
+message Term {
+  string field_name = 1;  ///< field
+  bool is_bitset = 2;
+  string term = 3;
+  float weight = 4;  ///< tw * field_weight
+  float idf = 5;
+}
+// if is_equal is true,
+// must equal, otherwise not equal
+message NumericEqual {
+  bool is_equal = 1;
+  string field_name = 2;
+  google.protobuf.Value value = 3;
+};
+
+message StrEqual {
+  bool is_equal = 1;
+  string field_name = 2;
+  google.protobuf.Value value = 3;
+};
+
+message ValueRange {
+  string field_name = 1;  ///< field
+  google.protobuf.Value min_value = 2;  ///< number or string
+  google.protobuf.Value max_value = 3;  ///< number or string
+}
+
+message BloomFilterQuery {
+  string field_name = 1;
+  string value_type = 2;
+  string bloom_filter_id = 3;
+  bytes mem_block = 4;
+}
+
+message DocIdInList {
+  // white list
+  repeated string doc_ids = 1;
+}
+
+message RepeatBoolQuery {
+  // sub query list
+  repeated BoolQuery query_list = 1;
+}
+
+/// Query
+message Query {
+  string raw_query = 1;
+  // query tree
+  RepeatBoolQuery query = 2;
+}

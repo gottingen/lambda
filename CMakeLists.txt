@@ -193,10 +193,14 @@ if (NOT PROTOC_LIB)
 endif ()
 
 include(CompileProto)
-set(PROTO_FILES lambda/proto/document.proto)
+set(PROTO_FILES
+        lambda/proto/document.proto
+        lambda/proto/ann_query.proto
+        lambda/proto/query.proto
+        )
 
 file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output/include/lambda)
-set(PROTOC_FLAGS ${PROTOC_FLAGS} -I${PROTOBUF_INCLUDE_DIR})
+set(PROTOC_FLAGS ${PROTOC_FLAGS} -I${PROTOBUF_INCLUDE_DIR} -I${PROJECT_SOURCE_DIR})
 compile_proto(PROTO_HDRS PROTO_SRCS ${PROJECT_BINARY_DIR}
         ${PROJECT_BINARY_DIR}/output/include
         ${PROJECT_SOURCE_DIR}
@@ -208,7 +212,7 @@ turbo_cc_library(
         SRCS
         ${PROTO_SRCS}
         COPTS
-        ${TURBO_DEFAULT_COPTS}
+       # ${TURBO_DEFAULT_COPTS}
         DEPS
         ${TURBO_DYLINK}
         PUBLIC

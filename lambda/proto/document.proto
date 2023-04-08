@@ -15,7 +15,7 @@
 
 syntax = "proto3";
 
-package search_engine;
+package lambda.proto;
 
 import "google/protobuf/struct.proto";
 
