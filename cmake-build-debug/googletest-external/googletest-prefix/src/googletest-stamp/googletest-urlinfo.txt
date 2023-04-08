@@ -1,0 +1,12 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=url
+command=/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake;-P;/Users/liyinbin/github/gottingen/lambda/cmake-build-debug/googletest-external/googletest-prefix/src/googletest-stamp/download-googletest.cmake;COMMAND;/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake;-P;/Users/liyinbin/github/gottingen/lambda/cmake-build-debug/googletest-external/googletest-prefix/src/googletest-stamp/verify-googletest.cmake;COMMAND;/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake;-P;/Users/liyinbin/github/gottingen/lambda/cmake-build-debug/googletest-external/googletest-prefix/src/googletest-stamp/extract-googletest.cmake
+source_dir=/Users/liyinbin/github/gottingen/lambda/cmake-build-debug/googletest-src
+work_dir=/Users/liyinbin/github/gottingen/lambda/cmake-build-debug
+url(s)=https://gitee.com/gottingen/googletest/repository/archive/main.zip
+hash=
+no_extract=
+

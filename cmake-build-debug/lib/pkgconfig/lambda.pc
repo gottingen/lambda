@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=/usr/local/lib
+includedir=/usr/local/include
+
+Name: lambda
+Description: Turbo lambda library
+URL: https://abseil.io/
+Version: head
+Requires:
+Libs: -L${libdir}  
+Cflags: -I${includedir} -Wno-float-conversion -Wno-implicit-float-conversion -Wno-implicit-int-float-conversion -Wno-unknown-warning-option -DNOMINMAX -Xarch_x86_64 -Xarch_x86_64 -Xarch_arm64 -Wno-unused-command-line-argument

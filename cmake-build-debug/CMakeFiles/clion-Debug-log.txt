@@ -1,0 +1,46 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/liyinbin/github/gottingen/lambda -B /Users/liyinbin/github/gottingen/lambda/cmake-build-debug
+CMake Warning at CMakeLists.txt:78 (message):
+  A future Turbo release will default TURBO_PROPAGATE_CXX_STD to ON for CMake
+  3.8 and up.  We recommend enabling this option to ensure your project still
+  builds correctly.
+
+
+-- TURBO SIMD FLAGS 
+-- Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE) 
+CMake Warning (dev) at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (TURBO) does
+  not match the name of the calling package (Turbo).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  CMake/FindTurbo.cmake:64 (find_package_handle_standard_args)
+  CMakeLists.txt:95 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Modules/ExternalProject.cmake:3075 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Modules/ExternalProject.cmake:4185 (_ep_add_download_command)
+  CMakeLists.txt:6 (ExternalProject_Add)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/liyinbin/github/gottingen/lambda/cmake-build-debug/googletest-external
+ninja: no work to do.
+-- testing enable
+CMake Warning at CMakeLists.txt:219 (message):
+    The default and system-level install directories are unsupported except in LTS   releases of Turbo.  Please set CMAKE_INSTALL_PREFIX to install Turbo in your   source or build tree directly.    
+
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/liyinbin/github/gottingen/lambda/cmake-build-debug

@@ -1,0 +1,82 @@
+//
+//  Copyright 2023 The Turbo Authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package search_engine;
+
+import "google/protobuf/struct.proto";
+
+message ForwardDataField {
+  oneof data {
+    google.protobuf.Value value = 1;
+    bytes bytes_value = 2;
+  }
+}
+
+message Document {
+  string doc_id = 1;
+  // Inverted word segmentation information
+  repeated InvertedTerm inverted_info = 2;
+  // Inverted domain field length
+  map<string, FieldInfo> field_info = 3;
+  // filter index data
+  repeated RestrictionInfo restriction_info = 4;
+  // forward index data
+  map<string, ForwardDataField> forward_data = 5;
+  // ann vector domain info
+  map<string, VectorField> vector_field_info = 6;
+}
+
+message FieldInfo {
+  // terms have been segmented, and do not duplicated
+  uint32 field_len = 1;
+}
+
+message InvertedTerm {
+  // The term itself, multiple identical terms in
+  // a document will be integrated into an InvertedTerm
+  string term = 1;
+  // The field where the term appears
+  repeated InvertedTermField field = 2;
+  // When term appears under multiple fields, take the highest score
+  // The score calculates the weight of each field
+  double score = 3;
+}
+
+message InvertedTermField {
+  string field_name = 1;
+  // The position where the term appears
+  // under the field, multiple offsets will be recorded if it appears multiple times
+  repeated uint32 offset = 2;
+  // The score of term under this field, regardless of weight
+  double score = 3;
+  // offset-level payload, the number should be the same as the offset
+  repeated bytes payload = 4;
+  // multi domain index
+  repeated uint32 multi_value_index = 5;
+  // payload of doc
+  bytes doc_term_payload = 6;
+}
+
+message RestrictionInfo {
+  string field = 1;
+  repeated string value = 2;
+}
+
+// vector domain info
+message VectorField {
+  repeated float value = 1;
+}

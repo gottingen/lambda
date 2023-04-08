@@ -1,0 +1,3 @@
+repository='external project URL'
+module='https://gitee.com/gottingen/googletest/repository/archive/main.zip'
+tag=''

@@ -1,0 +1,7 @@
+name: lambda-dev
+channels:
+  - conda-forge
+  - mgottingen
+dependencies:
+  - turbo
+  - protobuf <=3.20.0
