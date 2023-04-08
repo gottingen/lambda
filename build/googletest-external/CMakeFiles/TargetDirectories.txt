@@ -1,3 +1,0 @@
-/Users/liyinbin/github/gottingen/lambda/build/googletest-external/CMakeFiles/rebuild_cache.dir
-/Users/liyinbin/github/gottingen/lambda/build/googletest-external/CMakeFiles/edit_cache.dir
-/Users/liyinbin/github/gottingen/lambda/build/googletest-external/CMakeFiles/googletest.dir
