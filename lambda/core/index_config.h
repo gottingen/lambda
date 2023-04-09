@@ -5,6 +5,9 @@
 #ifndef LAMBDA_CORE_INDEX_CONFIG_H_
 #define LAMBDA_CORE_INDEX_CONFIG_H_
 
+#include <cstddef>
+#include <string>
+
 namespace lambda {
 
 enum class EngineType {
